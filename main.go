@@ -2,11 +2,12 @@ package main
 
 import (
   "github.com/gin-gonic/gin"
-  health "golang-gin-boilerplate/controllers/health"
+  "golang-gin-boilerplate/routes"
 )
 
 func main() {
-  r := gin.Default()
-  r.GET("/health", health.Health())
-  r.Run() 
+  router := gin.Default()
+  routes.HealthRoute(router)
+  var port = "3001"
+  router.Run("0.0.0.0:" + port)
 }
