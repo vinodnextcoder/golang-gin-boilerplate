@@ -9,7 +9,7 @@ import (
 
 func Health() gin.HandlerFunc {
 	return func(c *gin.Context) {
-    logservice.Info("error code", logrus.Fields{"status":"200"})
+    logservice.Info("Health endpoint called", logrus.Fields{"status":"200","functionName":"Health", "controller":"healthcontroller"})
     c.JSON(http.StatusOK, gin.H{
       "message": "Ok",
     })

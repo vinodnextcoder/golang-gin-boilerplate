@@ -27,4 +27,5 @@ func InitLogger() {
             LogFormat:       "[%lvl%]: %time% - %msg%\n",
         },
     }
+    Logger.SetFormatter(&logrus.JSONFormatter{})
 }
