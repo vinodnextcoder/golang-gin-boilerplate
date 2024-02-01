@@ -16,7 +16,7 @@ func Trace(message string, fields logrus.Fields) {
     logWithFields(logrus.TraceLevel, message, fields)
 }
 
-func InfoData(message string, fields logrus.Fields) {
+func Info(message string, fields logrus.Fields) {
     logWithFields(logrus.InfoLevel, message, fields)
 }
 

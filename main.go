@@ -16,7 +16,7 @@ func main() {
   if err != nil {
     log.Fatal("Error loading .env file")
   }
-  logservice.InfoData("golang app started")
+  logservice.Info("golang app started", logrus.Fields{"status":"200"})
   port := os.Getenv("PORT")
   router := gin.Default()
   routes.HealthRoute(router)
