@@ -7,7 +7,7 @@ import (
   "github.com/gin-gonic/gin"
   "golang-gin-boilerplate/routes"
   "golang-gin-boilerplate/services/logservice"
-  "github.com/sirupsen/logrus"
+  // "github.com/sirupsen/logrus"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
   if err != nil {
     log.Fatal("Error loading .env file")
   }
-  logservice.Info("golang app started", logrus.Fields{"status":"200"})
+  logservice.Info("golang app started")
   port := os.Getenv("PORT")
   router := gin.Default()
   routes.HealthRoute(router)
