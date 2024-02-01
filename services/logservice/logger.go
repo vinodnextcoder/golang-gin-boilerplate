@@ -5,6 +5,7 @@ import (
     "fmt"
     "io"
     "os"
+    "time"
     "github.com/sirupsen/logrus"
     "github.com/t-tomalak/logrus-easy-formatter"
 )
@@ -12,7 +13,11 @@ import (
 var Logger *logrus.Logger
 
 func InitLogger() {
-    f, err := os.OpenFile("log.txt", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
+    const layout = "01-02-2006"
+    // Place now in the string.
+    t := time.Now()
+    logfile := "file-log" + t.Format(layout) + ".txt"
+    f, err := os.OpenFile(logfile, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
     if err != nil {
         fmt.Println("Failed to create logfile" + "log.txt")
         panic(err)
