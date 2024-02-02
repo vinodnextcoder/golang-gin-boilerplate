@@ -8,6 +8,7 @@ import (
   "golang-gin-boilerplate/routes"
   "golang-gin-boilerplate/services/logservice"
   // "github.com/sirupsen/logrus"
+  "golang-gin-boilerplate/database"
 )
 
 func main() {
@@ -16,6 +17,7 @@ func main() {
   if err != nil {
     log.Fatal("Error loading .env file")
   }
+  db.NewDatabase()
   logservice.Info("golang app started")
   port := os.Getenv("PORT")
   router := gin.Default()
