@@ -22,6 +22,7 @@ func main() {
   port := os.Getenv("PORT")
   router := gin.Default()
   routes.HealthRoute(router)
+  routes.UserRoute(router)
   
   router.Run("0.0.0.0:" + port)
 }
