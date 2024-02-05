@@ -17,11 +17,12 @@ func main() {
   if err != nil {
     log.Fatal("Error loading .env file")
   }
-  db.NewDatabase()
+  database.InitDb()
   logservice.Info("golang app started")
   port := os.Getenv("PORT")
   router := gin.Default()
   routes.HealthRoute(router)
+  routes.UserRoute(router)
   
   router.Run("0.0.0.0:" + port)
 }

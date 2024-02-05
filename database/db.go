@@ -1,36 +1,34 @@
-package db
+package database
 
 import (
-    "fmt"
-    "os"
-    "gorm.io/driver/mysql"
-    "gorm.io/gorm"
+	"fmt"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
-//Database struct
-type Database struct {
-    DB *gorm.DB
+const DB_USERNAME = "root"
+const DB_PASSWORD = "test"
+const DB_NAME = "test"
+const DB_HOST = "127.0.0.1"
+const DB_PORT = "3306"
+
+var Db *gorm.DB
+func InitDb() *gorm.DB {
+	Db = connectDB()
+	return Db
 }
 
-//NewDatabase : intializes and returns mysql db
-func NewDatabase() Database {
-    USER := os.Getenv("DB_USER")
-    PASS := os.Getenv("DB_PASSWORD")
-    HOST := os.Getenv("DB_HOST")
-    DBNAME := os.Getenv("DB_NAME")
+func connectDB() (*gorm.DB) {
+	var err error
+	dsn := DB_USERNAME +":"+ DB_PASSWORD +"@tcp"+ "(" + DB_HOST + ":" + DB_PORT +")/" + DB_NAME + "?" + "parseTime=true&loc=Local"
+	fmt.Println("dsn : ", dsn)
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
-    URL := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local", USER, PASS, 
-    HOST, DBNAME)
-    fmt.Println(URL)
-    db, err := gorm.Open(mysql.Open(URL))
-
-    if err != nil {
-        panic("Failed to connect to database!")
-
-    }
+	if err != nil {
+		fmt.Println("Error connecting to database : error=%v", err)
+		return nil
+	}
     fmt.Println("Database connection established")
-    return Database{
-        DB: db,
-    }
 
+	return db
 }
