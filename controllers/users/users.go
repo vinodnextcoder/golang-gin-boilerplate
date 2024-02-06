@@ -6,6 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"golang-gin-boilerplate/models"
 	"golang-gin-boilerplate/database"
+	"golang-gin-boilerplate/services/apiresponse"
+	
 )
 
 
@@ -25,6 +27,7 @@ func CreateUser() gin.HandlerFunc {
 		   return
 	   }
 	   fmt.Println("record inserted successfully ", result.RowsAffected)
-       c.JSON(http.StatusOK, input)
+	   
+	   c.JSON(http.StatusOK, responses.SuccesResponse{Status: http.StatusOK, Message: "success", Data: map[string]interface{}{"data": input}})
 	}
 }
