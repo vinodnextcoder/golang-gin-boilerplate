@@ -1,10 +1,12 @@
 package routes
 
 import (
-	"github.com/gin-gonic/gin"
 	users "golang-gin-boilerplate/controllers/users"
+
+	"github.com/gin-gonic/gin"
 )
 
 func UserRoute(router *gin.Engine) {
 	router.POST("/create", users.CreateUser())
+	router.PUT("/update/:id", users.UpdateUser())
 }

@@ -30,3 +30,25 @@ func CreateUser() gin.HandlerFunc {
 		c.JSON(http.StatusOK, responses.SuccesResponse{Status: http.StatusOK, Message: "success", Data: map[string]interface{}{"data": input}})
 	}
 }
+
+func UpdateUser() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var user models.User
+		// id, _ := strconv.Atoi(c.Param("id"))
+
+		if err := database.Db.Where("Id = ?", c.Param("id")).First(&user).Error; err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+			return
+		}
+		// Validate input
+		var input models.UserUpdate
+		if err := c.ShouldBindJSON(&input); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		database.Db.Model(&user).Updates(input)
+
+		c.JSON(http.StatusOK, responses.SuccesResponse{Status: http.StatusOK, Message: "success", Data: map[string]interface{}{"data": user}})
+	}
+}
