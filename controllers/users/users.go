@@ -37,7 +37,7 @@ func UpdateUser() gin.HandlerFunc {
 		// id, _ := strconv.Atoi(c.Param("id"))
 
 		if err := database.Db.Where("Id = ?", c.Param("id")).First(&user).Error; err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+
 			return
 		}
 		// Validate input
@@ -48,6 +48,19 @@ func UpdateUser() gin.HandlerFunc {
 		}
 
 		database.Db.Model(&user).Updates(input)
+
+		c.JSON(http.StatusOK, responses.SuccesResponse{Status: http.StatusOK, Message: "success", Data: map[string]interface{}{"data": user}})
+	}
+}
+
+func GetUsers() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var user []models.User
+
+		err := database.Db.Find(&user).Error
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		}
 
 		c.JSON(http.StatusOK, responses.SuccesResponse{Status: http.StatusOK, Message: "success", Data: map[string]interface{}{"data": user}})
 	}
