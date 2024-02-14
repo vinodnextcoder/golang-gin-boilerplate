@@ -34,7 +34,6 @@ func CreateUser() gin.HandlerFunc {
 func UpdateUser() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var user models.User
-		// id, _ := strconv.Atoi(c.Param("id"))
 
 		if err := database.Db.Where("Id = ?", c.Param("id")).First(&user).Error; err != nil {
 
@@ -63,5 +62,32 @@ func GetUsers() gin.HandlerFunc {
 		}
 
 		c.JSON(http.StatusOK, responses.SuccesResponse{Status: http.StatusOK, Message: "success", Data: map[string]interface{}{"data": user}})
+	}
+}
+
+func DeleteUser() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var user models.User
+		result := database.Db.Where("Id = ?", c.Param("id")).Delete(&user)
+
+		if result.Error != nil {
+			// Handle database error
+			fmt.Println("something went wrong in db query", result.Error)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Database error"})
+			return
+		}
+
+		if result.RowsAffected == 0 {
+			// No record was deleted, return a not found response
+			c.JSON(http.StatusNotFound, gin.H{"error": "Record not found!"})
+			return
+		}
+
+		// Record deleted successfully
+		c.JSON(http.StatusOK, responses.SuccesResponse{
+			Status:  http.StatusOK,
+			Message: "User deleted successfully",
+			Data:    map[string]interface{}{"data": nil},
+		})
 	}
 }
