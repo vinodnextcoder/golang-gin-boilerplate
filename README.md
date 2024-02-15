@@ -34,7 +34,7 @@ Run run project
 
 go run main.go
 ```
-
+ **Testing api use postamn collection**
 **Api postman collection in root folder gin.postman_collection import in postman**
 
 
