@@ -1,4 +1,6 @@
   <!-- <h1 align="center">Welcome to <span style="color:mediumseagreen">Gin boilerplate</span> 👋</h1> -->
+
+#  ⚡️ API Gin boilerplate ⚡️
 <p align="center">
   <img src="https://img.shields.io/badge/golang-v1.21-lightblue" height="25"/>
   <img src="https://img.shields.io/badge/gin-v1.9-blue" height="25"/>
@@ -8,9 +10,6 @@
   <img src="https://img.shields.io/badge/docker-support-darkgreeen" height="25"/>
   <img src="https://img.shields.io/badge/kubernetes-support-darkgreeen" height="25"/> -->
 </p>
-
-
-#  ⚡️ API Gin boilerplate ⚡️
 
 ## Features
 
