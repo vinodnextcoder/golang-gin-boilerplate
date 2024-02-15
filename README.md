@@ -9,8 +9,6 @@
   <img src="https://img.shields.io/badge/kubernetes-support-darkgreeen" height="25"/> -->
 </p>
 
-It's an Golang API boilerplate project based on Gin framework.
-
 
 #  ⚡️ API Gin boilerplate ⚡️
 
