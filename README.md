@@ -1,6 +1,34 @@
 <h1 align="center">Welcome to <span style="color:mediumseagreen">Gin boilerplate</span> 👋</h1>
 
-<h1> API Gin boilerplate in progress</h1>
+<h1> API Gin boilerplate</h1>
+
+#  ⚡️ Fullstack Typescript Nest JS and Next JS ⚡️
+
+## Features
+
+1. user Register
+2. logrus logger
+
+
+## Backend
+- Golang
+- Gin-gonic framework
+- Mysql
+- Logrus logger
+
+```
+git clone https://github.com/vinodnextcoder/golang-gin-boilerplate.git
+cd golang-gin-boilerplate
+create file .env copy from .env
+
+Install project dependencies
+go mod download
+Run run project
+
+go run main
+```
+
+# Api postman collection in root folder gin.postman_collection
 
 <p align="center">
   <img src="https://img.shields.io/badge/golang-v1.21-lightblue" height="25"/>
