@@ -1,2 +1,7 @@
 {"level":"info","msg":"golang app started","time":"2024-02-15T09:57:52+05:30"}
 {"level":"info","msg":"golang app started","time":"2024-02-15T09:59:03+05:30"}
+{"level":"info","msg":"golang app started","time":"2024-02-15T18:09:11+05:30"}
+{"level":"info","msg":"golang app started","time":"2024-02-15T18:12:48+05:30"}
+{"level":"info","msg":"golang app started","time":"2024-02-15T18:14:35+05:30"}
+{"controller":"healthcontroller","functionName":"Health","level":"info","msg":"Health endpoint called","status":"200","time":"2024-02-15T18:14:52+05:30"}
+{"controller":"healthcontroller","functionName":"Health","level":"info","msg":"Health endpoint called","status":"200","time":"2024-02-15T18:14:53+05:30"}
