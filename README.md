@@ -35,6 +35,7 @@ Run run project
 go run main.go
 ```
 
-# Api postman collection in root folder gin.postman_collection
+**Api postman collection in root folder gin.postman_collection import in postman**
+
 
 
