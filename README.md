@@ -1,8 +1,7 @@
 <h1 align="center">Welcome to <span style="color:mediumseagreen">Gin boilerplate</span> 👋</h1>
 
-<h1> API Gin boilerplate</h1>
 
-#  ⚡️ Fullstack Typescript Nest JS and Next JS ⚡️
+#  ⚡️ API Gin boilerplate ⚡️
 
 ## Features
 
