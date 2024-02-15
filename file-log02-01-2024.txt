@@ -1,2 +1,0 @@
-{"level":"info","msg":"golang app started","time":"2024-02-01T17:27:24+05:30"}
-{"controller":"healthcontroller","functionName":"Health","level":"info","msg":"Health endpoint called","status":"200","time":"2024-02-01T17:27:43+05:30"}
