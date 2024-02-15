@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to <span style="color:mediumseagreen">Gin boilerplate</span> 👋</h1>
+  <!-- <h1 align="center">Welcome to <span style="color:mediumseagreen">Gin boilerplate</span> 👋</h1> -->
 <p align="center">
   <img src="https://img.shields.io/badge/golang-v1.21-lightblue" height="25"/>
   <img src="https://img.shields.io/badge/gin-v1.9-blue" height="25"/>
