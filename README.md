@@ -24,7 +24,7 @@ Install project dependencies
 go mod download
 Run run project
 
-go run main
+go run main.go
 ```
 
 # Api postman collection in root folder gin.postman_collection
