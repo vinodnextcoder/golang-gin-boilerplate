@@ -1,0 +1,6 @@
+{"level":"info","msg":"golang app started","time":"2024-02-20T14:13:26+05:30"}
+{"level":"info","msg":"golang app started","time":"2024-02-20T14:33:00+05:30"}
+{"level":"info","msg":"golang app started","time":"2024-02-20T14:34:35+05:30"}
+{"level":"info","msg":"golang app started","time":"2024-02-20T14:40:23+05:30"}
+{"level":"info","msg":"golang app started","time":"2024-02-20T14:45:28+05:30"}
+{"level":"info","msg":"golang app started","time":"2024-02-20T14:46:27+05:30"}

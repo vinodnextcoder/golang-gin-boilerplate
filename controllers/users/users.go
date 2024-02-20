@@ -10,6 +10,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// CreateUser create
+// @Summary create user
+// @Schemes
+// @Description  create user
+// @Tags userCreate
+// @Accept json
+// @Param       user body     models.User true "User Data"
+// @Produce json
+// @Success 201 {string} Success
+// @Router /users/v1/create [post]
 func CreateUser() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var input models.User
@@ -31,6 +41,16 @@ func CreateUser() gin.HandlerFunc {
 	}
 }
 
+// @Summary update user
+// @Schemes
+// @Description  update user
+// @Tags userUpdate
+// @Param       id path  int  true "User Id"
+// @Param       user body     models.User true "User Data"
+// @Accept json
+// @Produce json
+// @Success 200 {string} Success
+// @Router /users/v1/update/:id [put]
 func UpdateUser() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var user models.User
@@ -52,6 +72,14 @@ func UpdateUser() gin.HandlerFunc {
 	}
 }
 
+// @Summary get users list
+// @Schemes
+// @Description  get users list
+// @Tags userList
+// @Accept json
+// @Produce json
+// @Success 200 {string} Success
+// @Router /users/v1/users [get]
 func GetUsers() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var user []models.User
@@ -65,6 +93,14 @@ func GetUsers() gin.HandlerFunc {
 	}
 }
 
+// @Summary delete user
+// @Schemes
+// @Description  delete user
+// @Tags deleteUser
+// @Accept json
+// @Produce json
+// @Success 200 {string} Success
+// @Router /users/v1/delete/:id [delete]
 func DeleteUser() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var user models.User
