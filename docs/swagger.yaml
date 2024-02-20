@@ -1,4 +1,16 @@
 basePath: /
+definitions:
+  models.User:
+    properties:
+      Id:
+        type: integer
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
 externalDocs:
   description: OpenAPI
   url: https://swagger.io/resources/open-api/
@@ -27,4 +39,83 @@ paths:
       summary: hellow example
       tags:
       - example
+  /users/v1/create:
+    post:
+      consumes:
+      - application/json
+      description: create user
+      parameters:
+      - description: User Data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+      summary: create user
+      tags:
+      - userCreate
+  /users/v1/delete/:id:
+    delete:
+      consumes:
+      - application/json
+      description: delete user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: delete user
+      tags:
+      - deleteUser
+  /users/v1/update/:id:
+    put:
+      consumes:
+      - application/json
+      description: update user
+      parameters:
+      - description: User Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: User Data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: update user
+      tags:
+      - userUpdate
+  /users/v1/users:
+    get:
+      consumes:
+      - application/json
+      description: get users list
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: get users list
+      tags:
+      - userList
 swagger: "2.0"
