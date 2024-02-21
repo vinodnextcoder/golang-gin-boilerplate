@@ -42,6 +42,7 @@ func main() {
 	router := gin.Default()
 	routes.HealthRoute(router)
 	routes.UserRoute(router)
+	routes.AuthRoute(router)
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	router.Run("0.0.0.0:" + port)
 }

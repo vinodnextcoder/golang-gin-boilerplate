@@ -37,7 +37,7 @@ func CreateUser() gin.HandlerFunc {
 			panic(err)
 		}
 		fmt.Println("j", hash)
-		input.Password = string(hash)
+		userCreate.Password = string(hash)
 		result := database.Db.Create(&userCreate)
 		if result.Error != nil {
 			fmt.Println("something went wrong in db query")
