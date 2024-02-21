@@ -8,6 +8,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"golang.org/x/crypto/bcrypt"
 )
 
 // CreateUser create
@@ -27,8 +28,16 @@ func CreateUser() gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, responses.ErrorResponse{Status: http.StatusBadRequest, Message: "Error: Invalid input", Data: ""})
 			return
 		}
-		fmt.Println(input)
+		fmt.Println(input.Password)
 		userCreate := models.User(input)
+		hash, err := bcrypt.GenerateFromPassword([]byte(input.Password), 14)
+		if err != nil {
+			fmt.Println("something went wrong in db query")
+			c.JSON(http.StatusBadRequest, responses.ErrorResponse{Status: http.StatusBadRequest, Message: "Error: Password error", Data: ""})
+			panic(err)
+		}
+		fmt.Println("j", hash)
+		input.Password = string(hash)
 		result := database.Db.Create(&userCreate)
 		if result.Error != nil {
 			fmt.Println("something went wrong in db query")
