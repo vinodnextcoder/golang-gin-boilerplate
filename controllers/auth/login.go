@@ -8,7 +8,9 @@ import (
 	responses "golang-gin-boilerplate/services/apiresponse"
 	"golang-gin-boilerplate/services/logservice"
 	"net/http"
+	"time"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"
@@ -44,8 +46,43 @@ func Login() gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, responses.ErrorResponse{Status: http.StatusBadRequest, Message: "Error: Invalid email or password", Data: ""})
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{
-			"message": "Ok",
+
+		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+			"user": existingUser.Email,
+			"id":   existingUser.Id,
+			"sub":  existingUser.Id,
+			"exp":  time.Now().Add(time.Hour * 24 * 30).Unix(),
 		})
+
+		tokenStr, err := token.SignedString([]byte("supersaucysecret"))
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{
+				"error": "Failed to create token",
+			})
+			return
+		}
+
+		Refreshtoken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+			"user": existingUser.Email,
+			"id":   existingUser.Id,
+			"sub":  existingUser.Id,
+			"exp":  time.Now().Add(time.Hour * 24 * 30).Unix(),
+		})
+
+		refreshtoken, err := Refreshtoken.SignedString([]byte("supersaucysecret"))
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{
+				"error": "Failed to create token",
+			})
+			return
+		}
+		var res models.SignedResponse
+		c.SetSameSite(http.SameSiteLaxMode)
+		c.SetCookie("access_token", tokenStr, 3600*24*30, "", "", false, true)
+		c.SetCookie("refresh_token", refreshtoken, 3600*24*30, "", "", false, true)
+		res.Access_token = tokenStr
+		res.Refresh_token = refreshtoken
+		c.JSON(http.StatusOK, responses.SuccesResponse{Status: http.StatusOK, Message: "success", Data: map[string]interface{}{"data": res}})
+
 	}
 }

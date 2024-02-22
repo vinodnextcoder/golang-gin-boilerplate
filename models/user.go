@@ -18,3 +18,8 @@ type UserLogin struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
+
+type SignedResponse struct {
+	Access_token  string `json:"access_token"`
+	Refresh_token string `json:"refresh_token"`
+}
